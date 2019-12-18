@@ -8,17 +8,23 @@
         <img :src="happyImg" alt="" />
       </div>
 
-      <barrage
-        ref="barrage"
-        class="barrage"
-        :barrage-list="barrageList"
-        :speed="speed"
-        :loop="loop"
-        :channels="channels"
-        :background="background"
-        :border-color="borderColor"
-      />
-      <canvas ref="canvas"></canvas>
+      <div class="duilian">
+        <img :src="duilianImg" alt="" />
+      </div>
+
+      <div class="canvasWrap">
+        <barrage
+          ref="barrage"
+          class="barrage"
+          :barrage-list="barrageList"
+          :speed="speed"
+          :loop="loop"
+          :channels="channels"
+          :background="background"
+          :border-color="borderColor"
+        />
+        <canvas ref="canvas"></canvas>
+      </div>
     </div>
   </div>
 </template>
@@ -99,9 +105,7 @@ export default {
       setInterval(() => {
         this.$refs.barrage.add({
           icon: `https://backet-flb-face-search.oss-cn-hongkong.aliyuncs.com/da605649c4f44eb9a141cc549d3a322d_face_1.jpg`,
-          content:
-            "王朋，祝你新年快乐呀" +
-            this.currentId++,
+          content: "王朋，祝你新年快乐呀" + this.currentId++,
           color: "#fff",
           hat: this.getRandomNumberByRange(1, 10) > 5 ? "left" : "right"
         });
@@ -118,7 +122,6 @@ export default {
     text-align: center;
     img {
       width: 137px;
-      height: 24px;
     }
   }
   .happy {
@@ -126,9 +129,22 @@ export default {
     margin-top: 15px;
     img {
       width: 363px;
-      height: 54px;
     }
   }
+  .duilian {
+    position: absolute;
+    z-index: 0;
+    top: 100px;
+    right: 30px;
+    img {
+      width: 100px;
+    }
+  }
+}
+
+.canvasWrap{
+  position: relative;
+  z-index: 100;
 }
 
 .barrage2 {
