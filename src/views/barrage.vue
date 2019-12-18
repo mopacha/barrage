@@ -231,9 +231,7 @@ export default {
     },
 
     // 头像饰品
-
     drawHat(ctx, x, y, hat) {
- 
       if (hat === "left") {
         let image = document.getElementById("shizi");
         ctx.drawImage(image, x - 20, y + 60, 195 * 0.7, 144 * 0.7);
@@ -259,6 +257,9 @@ export default {
         let cy = y + r;
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+        ctx.lineWidth=10;
+        ctx.strokeStyle="#FBF0C0";
+        ctx.stroke();
         ctx.clip();
         ctx.drawImage(img, x, y, d, d);
         ctx.restore();
