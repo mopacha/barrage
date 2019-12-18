@@ -1,16 +1,25 @@
 <template>
   <div id="app">
-    <barrage
-      ref="barrage"
-      class="barrage"
-      :barrage-list="barrageList"
-      :speed="speed"
-      :loop="loop"
-      :channels="channels"
-      :background="background"
-      :border-color="borderColor"
-    />
-    <canvas ref="canvas"></canvas>
+    <div class="wall">
+      <div class="qin">
+        <img :src="qinImg" alt="" />
+      </div>
+      <div class="happy">
+        <img :src="happyImg" alt="" />
+      </div>
+
+      <barrage
+        ref="barrage"
+        class="barrage"
+        :barrage-list="barrageList"
+        :speed="speed"
+        :loop="loop"
+        :channels="channels"
+        :background="background"
+        :border-color="borderColor"
+      />
+      <canvas ref="canvas"></canvas>
+    </div>
   </div>
 </template>
 
@@ -24,6 +33,9 @@ export default {
   },
   data() {
     return {
+      happyImg: require("./imgs/happy.png"),
+      duilianImg: require("./imgs/duilian.png"),
+      qinImg: require("./imgs/qin.png"),
       userImg: require("./imgs/1.jpg"),
       msg: "评论信息评论信息",
       barrageIsShow: true,
@@ -88,7 +100,7 @@ export default {
         this.$refs.barrage.add({
           icon: `https://backet-flb-face-search.oss-cn-hongkong.aliyuncs.com/da605649c4f44eb9a141cc549d3a322d_face_1.jpg`,
           content:
-            "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 ." +
+            "王朋，祝你新年快乐呀" +
             this.currentId++,
           color: "#fff",
           hat: this.getRandomNumberByRange(1, 10) > 5 ? "left" : "right"
@@ -99,18 +111,31 @@ export default {
 };
 </script>
 <style lang="less">
-.barrage {
+.wall {
+  padding-top: 80px;
+  height: 100%;
+  .qin {
+    text-align: center;
+    img {
+      width: 137px;
+      height: 24px;
+    }
+  }
+  .happy {
+    text-align: center;
+    margin-top: 15px;
+    img {
+      width: 363px;
+      height: 54px;
+    }
+  }
+}
+
+.barrage2 {
   position: fixed;
   top: 0px;
   width: 100%;
   height: 100%;
   z-index: 1;
-}
-
-.add {
-  cursor: pointer;
-  position: absolute;
-  z-index: 333;
-  color: red;
 }
 </style>
