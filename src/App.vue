@@ -80,10 +80,11 @@ export default {
     addItem() {
       setInterval(() => {
         this.$refs.barrage.add({
-          icon: this.userImg,
-          content: "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 " + this.currentId++,
+          icon: `https://backet-flb-face-search.oss-cn-hongkong.aliyuncs.com/da605649c4f44eb9a141cc549d3a322d_face_1.jpg`,
+          content: "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 ." + this.currentId++,
           color: "green"
         });
+        
       },0);
     }
   }
@@ -92,7 +93,7 @@ export default {
 <style lang="less">
 .barrage {
   position: fixed;
-  top: 0;
+  top: 50px;
   width: 100%;
   height: 100%;
   z-index: 1;

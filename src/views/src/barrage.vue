@@ -1,5 +1,7 @@
 <template>
   <div class="barrage-container">
+    <div>sfsf</div>
+    <img style="display:none" id="caishen" src="../../imgs/caishen.png" />
     <canvas
       ref="canvasContainer"
       :width="barrageWidth"
@@ -132,6 +134,7 @@ export default {
      * 渲染
      */
     render() {
+
       this.ctx.clearRect(0, 0, this.barrageWidth, this.barrageHeight);
       this.ctx.font = "30px Microsoft YaHei";
       this.draw();
@@ -144,21 +147,21 @@ export default {
             let barrage = this.channelsArray[i][j];
             barrage.x -= this.speed;
             if (barrage.x <= 1.5 * this.barrageWidth) {
-
               this.ctx.fillStyle = `${barrage.color}`;
               this.ctx.fillText(
                 barrage.content,
                 barrage.x + (barrage.icon ? 120 : 0),
-                i * 300 + 121
+                i * 300 + 221
               );
               if (barrage.icon) {
                 this.circleImg(
                   this.ctx,
                   barrage.icon,
-                  barrage.x -120,
-                  i * 300 + 12,
+                  barrage.x - 120,
+                  i * 300 + 112,
                   100
                 );
+                this.drawHat(this.ctx, barrage.x - 120, i * 300 + 12);
               }
             }
             if (barrage.x < -(barrage.width + 1.5 * this.barrageWidth)) {
@@ -219,6 +222,15 @@ export default {
     getColor() {
       return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     },
+
+    // 头像饰品
+
+    drawHat(ctx, x, y) {
+      const image = document.getElementById("caishen");
+
+      ctx.drawImage(image, x + 80, y+70 , 195 * 0.7, 144 * 0.7);
+    },
+
     /**
      * 裁剪图片
      * @param ctx
@@ -242,7 +254,7 @@ export default {
       } catch (e) {
         console.log(e);
       }
-    },
+    }
   }
 };
 </script>
