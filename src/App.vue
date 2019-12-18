@@ -29,9 +29,9 @@ export default {
       barrageIsShow: true,
       currentId: 0,
       barrageList: [],
-      speed: 4,
+      speed: 5,
       loop: true,
-      channels: 5,
+      channels: 4,
       background: "#FFFFFF",
       borderColor: "rgb(233,195,237)"
     };
@@ -68,14 +68,23 @@ export default {
           color: "orange"
         }
       ];
-    }, 500);
+    }, 0);
+
+    this.addItem();
   },
   methods: {
-    add() {
-      this.$refs.barrage.add({
-        content: "增加一条新的弹幕增加一条新的弹幕",
-        color: "white"
-      });
+    getRandomNumberByRange(start, end) {
+      return Math.floor(Math.random() * (end - start) + start);
+    },
+
+    addItem() {
+      setInterval(() => {
+        this.$refs.barrage.add({
+          icon: this.userImg,
+          content: "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 " + this.currentId++,
+          color: "green"
+        });
+      },0);
     }
   }
 };
@@ -85,14 +94,21 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  height:100%;
+  height: 100%;
   z-index: 1;
-  background: rgba(70, 126, 120);
+  background: #fff;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-size: 20px;
+  font-size: 14px;
+}
+
+.add {
+  cursor: pointer;
+  position: absolute;
+  z-index: 333;
+  color: red;
 }
 </style>
