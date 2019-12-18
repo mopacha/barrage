@@ -1,8 +1,3 @@
-/**
- * @author Nickyzhang
- * @date 2019/7/7
- * @description file templates
- */
 const webpack = require("webpack");
 
 module.exports = {
