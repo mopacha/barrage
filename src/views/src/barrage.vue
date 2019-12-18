@@ -1,7 +1,7 @@
 <template>
   <div class="barrage-container">
-    <div>sfsf</div>
     <img style="display:none" id="caishen" src="../../imgs/caishen.png" />
+    <img style="display:none" id="shizi" src="../../imgs/shizi.png" />
     <canvas
       ref="canvasContainer"
       :width="barrageWidth"
@@ -108,6 +108,7 @@ export default {
           content: content,
           x: 1.5 * this.barrageWidth,
           icon: icon,
+          hat: this.barrageQueue[i].hat,
           width:
             this.ctx1.measureText(content).width * 3 +
             (this.barrageQueue[i].icon ? 220 : 0),
@@ -134,7 +135,6 @@ export default {
      * 渲染
      */
     render() {
-
       this.ctx.clearRect(0, 0, this.barrageWidth, this.barrageHeight);
       this.ctx.font = "30px Microsoft YaHei";
       this.draw();
@@ -161,7 +161,12 @@ export default {
                   i * 300 + 112,
                   100
                 );
-                this.drawHat(this.ctx, barrage.x - 120, i * 300 + 12);
+                this.drawHat(
+                  this.ctx,
+                  barrage.x - 120,
+                  i * 300 + 12,
+                  barrage.hat
+                );
               }
             }
             if (barrage.x < -(barrage.width + 1.5 * this.barrageWidth)) {
@@ -204,6 +209,7 @@ export default {
       let item = {
         content: content,
         x: 1.5 * this.barrageWidth,
+         hat: obj.hat,
         icon: obj.icon ? img : "",
         width: this.ctx1.measureText(content).width * 3 + (obj.icon ? 220 : 0),
         color: obj.color || this.getColor()
@@ -225,10 +231,15 @@ export default {
 
     // 头像饰品
 
-    drawHat(ctx, x, y) {
-      const image = document.getElementById("caishen");
-
-      ctx.drawImage(image, x + 80, y+70 , 195 * 0.7, 144 * 0.7);
+    drawHat(ctx, x, y, hat) {
+ 
+      if (hat === "left") {
+        let image = document.getElementById("shizi");
+        ctx.drawImage(image, x - 20, y + 60, 195 * 0.7, 144 * 0.7);
+      } else {
+        let image = document.getElementById("caishen");
+        ctx.drawImage(image, x + 80, y + 70, 195 * 0.7, 144 * 0.7);
+      }
     },
 
     /**

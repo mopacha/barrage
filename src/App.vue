@@ -42,30 +42,36 @@ export default {
         {
           icon: this.userImg,
           content: "1试数据测试数测试数据数测试数据",
-          color: "orange"
+          color: "orange",
+          hat: "left"
         },
         {
           icon: this.userImg,
           content: "2数据测试数据测试数据测试数据测试数据测试数据",
-          color: "orange"
+          color: "orange",
+          hat: "left"
         },
         {
           icon: this.userImg,
           content: "3测试数据测试数据测试数据测试数据测试数据数据测试数据",
-          color: "red"
+          color: "red",
+          hat: "right"
         },
         {
           icon: this.userImg,
           content: "4试数据测测试数据测试数据测试数据测试数据测试数据试据",
-          color: "blue"
+          color: "blue",
+          hat: "right"
         },
         {
           content: "5测试数据测试数据测试数据测试数据测试数据",
-          color: "green"
+          color: "green",
+          hat: "right"
         },
         {
           content: "6测试数据测试数据数据测试数据",
-          color: "orange"
+          color: "orange",
+          hat: "right"
         }
       ];
     }, 0);
@@ -81,11 +87,13 @@ export default {
       setInterval(() => {
         this.$refs.barrage.add({
           icon: `https://backet-flb-face-search.oss-cn-hongkong.aliyuncs.com/da605649c4f44eb9a141cc549d3a322d_face_1.jpg`,
-          content: "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 ." + this.currentId++,
-          color: "green"
+          content:
+            "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 ." +
+            this.currentId++,
+          color: "green",
+          hat: this.getRandomNumberByRange(1, 10) > 5 ? "left" : "right"
         });
-        
-      },0);
+      }, 0);
     }
   }
 };
