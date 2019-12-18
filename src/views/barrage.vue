@@ -1,7 +1,7 @@
 <template>
   <div class="barrage-container">
-    <img style="display:none" id="caishen" src="../../imgs/caishen.png" />
-    <img style="display:none" id="shizi" src="../../imgs/shizi.png" />
+    <img style="display:none" id="caishen" src="../imgs/caishen.png" />
+    <img style="display:none" id="shizi" src="../imgs/shizi.png" />
     <canvas
       ref="canvasContainer"
       :width="barrageWidth"
@@ -82,7 +82,7 @@ export default {
   },
   mounted() {
     this.barrageWidth = document.body.clientWidth * 2;
-    this.barrageHeight = this.channels * 400;
+    this.barrageHeight = this.channels * 350;
     this.ctx = this.$refs.canvas.getContext("2d");
     this.ctx1 = this.$refs.canvasContainer.getContext("2d");
   },
@@ -111,7 +111,7 @@ export default {
           hat: this.barrageQueue[i].hat,
           width:
             this.ctx1.measureText(content).width * 3 +
-            (this.barrageQueue[i].icon ? 220 : 0),
+            (this.barrageQueue[i].icon ? 400 : 0),
           color: this.barrageQueue[i].color || this.getColor()
         });
       }
@@ -148,6 +148,7 @@ export default {
             barrage.x -= this.speed;
             if (barrage.x <= 1.5 * this.barrageWidth) {
               this.ctx.fillStyle = `${barrage.color}`;
+              this.ctx.font="36px PingFangSC-Regular";
               this.ctx.fillText(
                 barrage.content,
                 barrage.x + (barrage.icon ? 120 : 0),
@@ -211,7 +212,7 @@ export default {
         x: 1.5 * this.barrageWidth,
          hat: obj.hat,
         icon: obj.icon ? img : "",
-        width: this.ctx1.measureText(content).width * 3 + (obj.icon ? 220 : 0),
+        width: this.ctx1.measureText(content).width * 3 + (obj.icon ? 400 : 0),
         color: obj.color || this.getColor()
       };
       this.barrageArray.unshift(item);

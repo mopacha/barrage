@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Barrage from "./views/src/index";
+import Barrage from "./views/index";
 //    import Barrage from 'vue-barrage'
 export default {
   name: "app",
@@ -42,19 +42,19 @@ export default {
         {
           icon: this.userImg,
           content: "1试数据测试数测试数据数测试数据",
-          color: "orange",
+          color: "#fff",
           hat: "left"
         },
         {
           icon: this.userImg,
           content: "2数据测试数据测试数据测试数据测试数据测试数据",
-          color: "orange",
+          color: "#fff",
           hat: "left"
         },
         {
           icon: this.userImg,
           content: "3测试数据测试数据测试数据测试数据测试数据数据测试数据",
-          color: "red",
+          color: "blue",
           hat: "right"
         },
         {
@@ -90,7 +90,7 @@ export default {
           content:
             "王朋，祝你新年快乐呀:君不见，黄河之水天上来，奔流到海不复回 ." +
             this.currentId++,
-          color: "green",
+          color: "#fff",
           hat: this.getRandomNumberByRange(1, 10) > 5 ? "left" : "right"
         });
       }, 0);
@@ -101,17 +101,10 @@ export default {
 <style lang="less">
 .barrage {
   position: fixed;
-  top: 50px;
+  top: 0px;
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: #fff;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
 }
 
 .add {

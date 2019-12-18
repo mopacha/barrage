@@ -1,4 +1,10 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -7,7 +13,6 @@ body {
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
-
 html {
   height: 100%;
   box-sizing: border-box;
@@ -15,5 +20,7 @@ html {
 
 #app {
   height: 100%;
+  background:#fb5232 url("../imgs/bg.png") no-repeat;
+  background-size: 100% 100%;
 }
 
